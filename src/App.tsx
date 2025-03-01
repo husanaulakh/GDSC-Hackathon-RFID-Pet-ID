@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import SeeRfid from "./pages/SeeRfid";
 import { PageTransition } from "./components/Layout";
 import { AnimatePresence } from "framer-motion";
 
@@ -25,6 +26,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/see-rfid" element={<SeeRfid/>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </PageTransition>
