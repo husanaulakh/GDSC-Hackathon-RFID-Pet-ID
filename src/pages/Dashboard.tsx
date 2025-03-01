@@ -246,7 +246,7 @@ const Dashboard = () => {
                 )}
               </div>
               
-              <div className="glass-card p-6">
+              {/* <div className="glass-card p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-lg font-medium">Recent Activities</h2>
                   <button className="text-primary text-sm hover:underline">View All</button>
@@ -299,7 +299,7 @@ const Dashboard = () => {
                     <ArrowRight className="ml-1 h-4 w-4" />
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
