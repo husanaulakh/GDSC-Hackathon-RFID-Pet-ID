@@ -72,10 +72,6 @@ const Index = () => {
                 Get Started
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
-              <Link to="/scan" className="btn-secondary">
-                <Search className="mr-2 h-4 w-4" />
-                Scan a Pet Tag
-              </Link>
             </div>
           </motion.div>
 

@@ -1,7 +1,6 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Layout } from '../components/Layout';
-import { Search, AlertCircle, QrCode, PlusCircle, RefreshCw } from 'lucide-react';
+import { Search, AlertCircle, PlusCircle, RefreshCw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PetCard, { PetData } from '../components/PetCard';
 
@@ -20,27 +19,15 @@ const samplePet: PetData = {
 };
 
 const Scan = () => {
-  const [isScanning, setIsScanning] = useState(false);
   const [showResult, setShowResult] = useState(false);
   const [tagId, setTagId] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleScanStart = () => {
-    if (!tagId && !isScanning) {
-      setIsScanning(true);
-      setErrorMessage('');
-      setShowResult(false);
-      
-      // Simulating scanning process
-      setTimeout(() => {
-        setIsScanning(false);
-        setShowResult(true);
-      }, 2500);
-    } else if (!tagId) {
-      setErrorMessage('Please enter a valid tag ID or use the scanner');
+  const handleSearch = () => {
+    if (!tagId) {
+      setErrorMessage('Please enter a valid tag ID');
     } else {
       setErrorMessage('');
-      setIsScanning(false);
       setShowResult(true);
     }
   };
@@ -48,25 +35,16 @@ const Scan = () => {
   const handleReset = () => {
     setTagId('');
     setShowResult(false);
-    setIsScanning(false);
     setErrorMessage('');
   };
-
-  useEffect(() => {
-    return () => {
-      // Cleanup any active scanning when component unmounts
-      setIsScanning(false);
-    };
-  }, []);
 
   return (
     <Layout>
       <div className="layout-container section-padding">
         <div className="max-w-4xl mx-auto text-center mb-12">
-          <h1 className="heading-lg mb-4">Scan Pet Tag</h1>
+          <h1 className="heading-lg mb-4">Search Pet Tag</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Found a pet? Use this tool to scan their RFID tag or enter the tag ID manually.
-            You'll be able to view the pet's information and contact their owner.
+            Found a pet? Enter their tag ID to view their information and contact their owner.
           </p>
         </div>
 
@@ -84,7 +62,6 @@ const Scan = () => {
                       onChange={(e) => setTagId(e.target.value)}
                       placeholder="e.g. RF-0000-0000"
                       className="input-field pl-11"
-                      disabled={isScanning}
                     />
                     <div className="absolute left-0 top-0 h-full flex items-center justify-center w-11 pointer-events-none">
                       <Search className="h-5 w-5 text-muted-foreground" />
@@ -98,58 +75,13 @@ const Scan = () => {
                   )}
                 </div>
 
-                <div className="flex flex-col items-center justify-center">
-                  <p className="text-muted-foreground mb-4">or use the RFID scanner</p>
-                  
-                  <div className="relative">
-                    <AnimatePresence>
-                      {isScanning && (
-                        <motion.div
-                          className="absolute top-0 left-0 w-full h-full"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                        >
-                          <div className="absolute inset-0 bg-primary/5 rounded-full"></div>
-                          <div className="absolute inset-2 bg-primary/5 rounded-full animate-pulse"></div>
-                          <div className="absolute inset-0 scanning-effect"></div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                    
-                    <button
-                      onClick={handleScanStart}
-                      disabled={isScanning}
-                      className={`relative bg-secondary hover:bg-secondary/80 p-8 rounded-full transition-all ${
-                        isScanning ? 'animate-pulse' : ''
-                      }`}
-                    >
-                      <QrCode className={`h-12 w-12 ${isScanning ? 'text-primary' : 'text-foreground'}`} />
-                    </button>
-                  </div>
-                  
-                  <p className="mt-4 text-sm text-muted-foreground">
-                    {isScanning ? 'Scanning...' : 'Click to start scanning'}
-                  </p>
-                </div>
-
                 <div className="text-center">
                   <button
-                    onClick={handleScanStart}
-                    disabled={isScanning}
+                    onClick={handleSearch}
                     className="btn-primary"
                   >
-                    {isScanning ? (
-                      <>
-                        <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-                        Scanning...
-                      </>
-                    ) : (
-                      <>
-                        <Search className="mr-2 h-4 w-4" />
-                        Find Pet
-                      </>
-                    )}
+                    <Search className="mr-2 h-4 w-4" />
+                    Find Pet
                   </button>
                 </div>
               </div>
@@ -168,7 +100,7 @@ const Scan = () => {
                       className="text-primary text-sm flex items-center hover:underline"
                     >
                       <RefreshCw className="mr-2 h-4 w-4" />
-                      Scan Again
+                      Search Again
                     </button>
                   </div>
                   

@@ -55,7 +55,6 @@ export const Header = () => {
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'Scan Tag', path: '/scan' },
     { name: 'How It Works', path: '/#how-it-works' },
     { name: 'Contact', path: '/#contact' },
   ];
