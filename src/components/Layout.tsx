@@ -87,13 +87,6 @@ export const Header = () => {
 
           <div className="hidden md:flex items-center space-x-4">
             <Link
-              to="/scan"
-              className="inline-flex items-center justify-center rounded-md bg-secondary px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary/80"
-            >
-              <Search className="mr-2 h-4 w-4" />
-              Scan Tag
-            </Link>
-            <Link
               to="/auth"
               className="btn-primary"
             >
@@ -177,11 +170,6 @@ export const Footer = () => {
               <li>
                 <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">
                   Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/scan" className="text-muted-foreground hover:text-primary transition-colors">
-                  Scan Tag
                 </Link>
               </li>
               <li>
