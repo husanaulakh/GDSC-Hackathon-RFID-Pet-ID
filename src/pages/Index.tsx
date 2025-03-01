@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Layout } from '../components/Layout';
-import { PawPrint, Search, Smartphone, Radio, Heart, Shield, ArrowRight } from 'lucide-react';
+import { PawPrint, Search, Smartphone, Radio, Heart, Shield, ArrowRight, MapPin, Calendar, CheckCircle, AlertCircle } from 'lucide-react';
 import PetCard, { PetData } from '../components/PetCard';
 
 const samplePets: PetData[] = [
