@@ -26,7 +26,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/see-rfid" element={<SeeRfid/>} />
+              <Route path="/c" element={<SeeRfid/>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </PageTransition>
