@@ -10,7 +10,7 @@ type Pet = {
 function SeeRfid() {
 
 	const [search_params] = useSearchParams();
-	const rfid_val = search_params.get("rfid");
+	const rfid_val = search_params.get("r");
 
 	const [pet_profile, set_pet_profile] = useState<Pet | "failed" | "loading">("loading");
 
