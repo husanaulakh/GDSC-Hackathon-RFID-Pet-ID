@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout } from '../components/Layout';
 import { motion } from 'framer-motion';
 import { 
@@ -9,44 +9,48 @@ import {
 } from 'lucide-react';
 import PetCard, { PetData } from '../components/PetCard';
 import PetForm from '@/components/AddPetForm';
+import supabase from "@/supabaseClient";
 
-const samplePets: PetData[] = [
-  {
-    id: '1',
-    name: 'Bella',
-    species: 'Dog',
-    breed: 'Golden Retriever',
-    age: '4 years',
-    tagId: 'RF-9238-4721',
-    status: 'FOUND',
-    image: 'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?q=80&w=500',
-    lastSeen: 'Yesterday',
-    location: 'Central Park, NY',
-  },
-  {
-    id: '2',
-    name: 'Max',
-    species: 'Cat',
-    breed: 'Tabby',
-    age: '2 years',
-    tagId: 'RF-4378-2901',
-    status: 'LOST',
-    image: 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?q=80&w=500',
-    lastSeen: '3 days ago',
-    location: 'Downtown, Seattle',
-    ownerContact: 'John Doe: (555) 123-4567',
-  },
-  {
-    id: '3',
-    name: 'Charlie',
-    species: 'Dog',
-    breed: 'Beagle',
-    age: '3 years',
-    tagId: 'RF-7623-1054',
-    status: 'HOME',
-    image: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=500',
-  },
-];
+
+// const samplePets: PetData[] = [
+//   {
+//     id: '1',
+//     name: 'Bella',
+//     species: 'Dog',
+//     breed: 'Golden Retriever',
+//     age: '4 years',
+//     tagId: 'RF-9238-4721',
+//     status: 'FOUND',
+//     image: 'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?q=80&w=500',
+//     lastSeen: 'Yesterday',
+//     location: 'Central Park, NY',
+//   },
+//   {
+//     id: '2',
+//     name: 'Max',
+//     species: 'Cat',
+//     breed: 'Tabby',
+//     age: '2 years',
+//     tagId: 'RF-4378-2901',
+//     status: 'LOST',
+//     image: 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?q=80&w=500',
+//     lastSeen: '3 days ago',
+//     location: 'Downtown, Seattle',
+//     ownerContact: 'John Doe: (555) 123-4567',
+//   },
+//   {
+//     id: '3',
+//     name: 'Charlie',
+//     species: 'Dog',
+//     breed: 'Beagle',
+//     age: '3 years',
+//     tagId: 'RF-7623-1054',
+//     status: 'HOME',
+//     image: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=500',
+//   },
+// ];
+
+export const USER_ID = "464c1c37-7181-4ea6-a63d-cf8be0c03960";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -54,10 +58,32 @@ const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedPet, setSelectedPet] = useState<PetData | null>(null);
   const [showAddPet, setShowAddPet] = useState<boolean>(false);
+  const [pets, setPets] = useState<Array<PetData>>([]);
+  
 
-  const filteredPets = samplePets.filter(pet => {
-    const matchesSearch = pet.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        pet.tagId.toLowerCase().includes(searchTerm.toLowerCase());
+  useEffect(() => {
+    async function fetch_pets() {
+      console.log("Fetching pets");
+      const { data, error } = await supabase
+        .from('pets')
+        .select('*')
+        .eq('user_id', USER_ID)
+      
+      if (error) {
+        console.log("Fail!!!!!!")
+      }
+
+      setPets(data);
+      console.log(data);
+    }
+
+    fetch_pets()   
+  }, [])
+
+
+  const filteredPets = pets.filter(pet => {
+    const matchesSearch = pet.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        pet.title.toLowerCase().includes(searchTerm.toLowerCase());
     
     if (activeTab === 'all') return matchesSearch;
     if (activeTab === 'lost') return pet.status === 'LOST' && matchesSearch;
@@ -113,24 +139,24 @@ const Dashboard = () => {
                   <div className="grid grid-cols-2 gap-3">
                     <div className="p-3 bg-secondary rounded-lg">
                       <p className="text-xs text-muted-foreground mb-1">Total Pets</p>
-                      <p className="text-2xl font-semibold">{samplePets.length}</p>
+                      <p className="text-2xl font-semibold">{pets.length}</p>
                     </div>
                     <div className="p-3 bg-pet-lost/10 rounded-lg">
                       <p className="text-xs text-muted-foreground mb-1">Lost</p>
                       <p className="text-2xl font-semibold text-pet-lost">
-                        {samplePets.filter(p => p.status === 'LOST').length}
+                        {pets.filter(p => p.status === 'LOST').length}
                       </p>
                     </div>
                     <div className="p-3 bg-pet-found/10 rounded-lg">
                       <p className="text-xs text-muted-foreground mb-1">Found</p>
                       <p className="text-2xl font-semibold text-pet-found">
-                        {samplePets.filter(p => p.status === 'FOUND').length}
+                        {pets.filter(p => p.status === 'FOUND').length}
                       </p>
                     </div>
                     <div className="p-3 bg-pet-blue/10 rounded-lg">
                       <p className="text-xs text-muted-foreground mb-1">Safe</p>
                       <p className="text-2xl font-semibold text-pet-blue">
-                        {samplePets.filter(p => p.status === 'HOME').length}
+                        {pets.filter(p => p.status === 'HOME').length}
                       </p>
                     </div>
                   </div>
@@ -235,7 +261,7 @@ const Dashboard = () => {
                   <div className="grid gap-6">
                     {filteredPets.map((pet) => (
                       <motion.div
-                        key={pet.id}
+                        key={pet.pet_id}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         whileHover={{ y: -2 }}

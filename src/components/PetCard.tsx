@@ -2,18 +2,28 @@
 import React from 'react';
 import { PawPrint, Calendar, MapPin, AlertCircle, CheckCircle } from 'lucide-react';
 
+// export interface PetData {
+//   id: string;
+//   name: string;
+//   species: string;
+//   breed?: string;
+//   age?: string;
+//   tagId: string;
+//   status: 'FOUND' | 'LOST' | 'HOME';
+//   image?: string;
+//   lastSeen?: string;
+//   ownerContact?: string;
+//   location?: string;
+// }
+
 export interface PetData {
-  id: string;
-  name: string;
-  species: string;
-  breed?: string;
-  age?: string;
-  tagId: string;
+  user_id: string;
+  pet_id: string;
+  title: string;
+  description: string;
+  contact_at: string;
+  photo: string;
   status: 'FOUND' | 'LOST' | 'HOME';
-  image?: string;
-  lastSeen?: string;
-  ownerContact?: string;
-  location?: string;
 }
 
 interface PetCardProps {
@@ -45,10 +55,10 @@ const PetCard: React.FC<PetCardProps> = ({ pet, isDetailed = false, onClick }) =
       <div className="flex flex-col md:flex-row gap-4">
         <div className={`relative ${isDetailed ? 'md:w-1/3' : 'w-full md:w-1/4'}`}>
           <div className="relative aspect-square rounded-xl overflow-hidden bg-secondary">
-            {pet.image ? (
+            {pet.photo ? (
               <img 
-                src={pet.image} 
-                alt={pet.name} 
+                src={pet.photo} 
+                alt={pet.title} 
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -66,35 +76,35 @@ const PetCard: React.FC<PetCardProps> = ({ pet, isDetailed = false, onClick }) =
         
         <div className={`flex-1 ${isDetailed ? '' : 'space-y-2'}`}>
           <div className="flex justify-between items-start mb-2">
-            <h3 className={`font-semibold ${isDetailed ? 'text-2xl' : 'text-lg'}`}>{pet.name}</h3>
-            <div className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">{pet.tagId}</div>
+            <h3 className={`font-semibold ${isDetailed ? 'text-2xl' : 'text-lg'}`}>{pet.title}</h3>
+            <div className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">{pet.pet_id}</div>
           </div>
           
-          <div className="text-muted-foreground text-sm mb-3">
+          {/* <div className="text-muted-foreground text-sm mb-3">
             {pet.species}{pet.breed ? ` • ${pet.breed}` : ''}
             {pet.age ? ` • ${pet.age}` : ''}
-          </div>
+          </div> */}
           
-          {(pet.status === 'LOST' || isDetailed) && pet.lastSeen && (
+          {(pet.status === 'LOST' || isDetailed) && (
             <div className="flex items-center text-sm text-muted-foreground mt-2">
               <Calendar className="h-4 w-4 mr-2" />
-              <span>Last seen: {pet.lastSeen}</span>
+              <span>Last seen: in Coquitlam</span>
             </div>
           )}
           
-          {(pet.status === 'LOST' || isDetailed) && pet.location && (
+          {(pet.status === 'LOST' || isDetailed) && (
             <div className="flex items-center text-sm text-muted-foreground mt-2">
               <MapPin className="h-4 w-4 mr-2" />
-              <span>{pet.location}</span>
+              <span>{"Coquitlam"}</span>
             </div>
           )}
           
           {isDetailed && (
             <div className="mt-4 space-y-4">
-              {pet.ownerContact && (
+              {pet.contact_at && (
                 <div>
                   <h4 className="text-sm font-medium mb-1">Contact Information</h4>
-                  <p className="text-sm bg-secondary p-3 rounded-md">{pet.ownerContact}</p>
+                  <p className="text-sm bg-secondary p-3 rounded-md">{pet.contact_at}</p>
                 </div>
               )}
               

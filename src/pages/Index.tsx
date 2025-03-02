@@ -8,40 +8,32 @@ import PetCard, { PetData } from '../components/PetCard';
 
 const samplePets: PetData[] = [
   {
-    id: '1',
-    name: 'Bella',
-    species: 'Dog',
-    breed: 'Golden Retriever',
-    age: '4 years',
-    tagId: 'RF-9238-4721',
-    status: 'FOUND',
-    image: 'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?q=80&w=500',
-    lastSeen: 'Yesterday',
-    location: 'Central Park, NY',
+    user_id: '1',
+    pet_id: 'a',
+    title: 'OliJo',
+    description: 'golden retriever',
+    contact_at: '123-456-7890',
+    photo: 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?q=80&w=500',
+    status: 'FOUND'
   },
   {
-    id: '2',
-    name: 'Max',
-    species: 'Cat',
-    breed: 'Tabby',
-    age: '2 years',
-    tagId: 'RF-4378-2901',
-    status: 'LOST',
-    image: 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?q=80&w=500',
-    lastSeen: '3 days ago',
-    location: 'Downtown, Seattle',
-    ownerContact: 'John Doe: (555) 123-4567',
+    user_id: '1',
+    pet_id: 'a',
+    title: 'OliJo',
+    description: 'golden retriever',
+    contact_at: '123-456-7890',
+    photo: 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?q=80&w=500',
+    status: 'FOUND'
   },
   {
-    id: '3',
-    name: 'Charlie',
-    species: 'Dog',
-    breed: 'Beagle',
-    age: '3 years',
-    tagId: 'RF-7623-1054',
-    status: 'HOME',
-    image: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=500',
-  },
+    user_id: '1',
+    pet_id: 'a',
+    title: 'OliJo',
+    description: 'golden retriever',
+    contact_at: '123-456-7890',
+    photo: 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?q=80&w=500',
+    status: 'FOUND'
+  }
 ];
 
 const Index = () => {
@@ -184,7 +176,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {samplePets.map((pet) => (
               <motion.div
-                key={pet.id}
+                key={pet.pet_id}
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.2 }}
               >
