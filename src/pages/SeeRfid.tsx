@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 type Pet = {
 	title: string;
 	contact_at: string;
+	photo: string;
 };
 
 function SeeRfid() {
@@ -46,7 +47,12 @@ function SeeRfid() {
 			console.log(pet_data);
 			
 			try {
-				set_pet_profile({title: pet_data.title, contact_at: pet_data.contact_at})
+				set_pet_profile({
+					title: pet_data.title, 
+					contact_at: pet_data.contact_at, 
+					photo: pet_data.photo
+				})
+
 			} catch {
 				set_pet_profile("failed");
 				return;
@@ -69,6 +75,11 @@ function SeeRfid() {
 				<p className="text-4xl">Hello I am {pet_profile.title}! Nice to meet you</p>
 
 				<p>You can contact my owner at: {pet_profile.contact_at}</p>
+				<img 
+					className="w-64 h-64 mt-4 rounded-lg object-cover"
+					src={pet_profile.photo} 
+					alt={`Photo of ${pet_profile.title}`} 
+				/>
 			</div>
 		</div>
 	)
