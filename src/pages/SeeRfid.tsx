@@ -1,41 +1,74 @@
+import supabase from "@/supabaseClient";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 type Pet = {
-	name: string;
-	owner_contact: string;
+	title: string;
+	contact_at: string;
 };
 
 function SeeRfid() {
 
 	const [search_params] = useSearchParams();
 	const rfid_val = search_params.get("rfid");
-	
+
 	const [pet_profile, set_pet_profile] = useState<Pet | "failed" | "loading">("loading");
-	const [loading, set_loading] = useState<boolean>(true);
 
 	useEffect(() => {
-		if (rfid_val === "rfid-1") {
-			set_pet_profile({name: "Rufus", owner_contact: "+1 123 456 7890"})
-		} else {
-			set_pet_profile("failed")
+		async function fetch_and_update_rfid_data() {
+			const { data, error } = await supabase
+				.from('rfid')
+				.select('pet_id')
+				.eq('id', rfid_val)
+				.limit(1)
+				.single()
+			console.log("Matching pet_id is:")
+			console.log(data.pet_id);
+
+			if (error) {
+				set_pet_profile("failed");
+				return;
+			}
+
+			const { data: pet_data, error: pet_error } = await supabase
+				.from('pets')
+				.select('*')
+				.eq('pet_id', data.pet_id)
+				.limit(1)
+				.single()
+
+			if (pet_error) {
+				set_pet_profile("failed")
+				return
+			}
+			
+			console.log("Matching pet_data is:")
+			console.log(pet_data);
+			
+			try {
+				set_pet_profile({title: pet_data.title, contact_at: pet_data.contact_at})
+			} catch {
+				set_pet_profile("failed");
+				return;
+			}
 		}
+		fetch_and_update_rfid_data()
 	}, [])
 
 	if (pet_profile === "loading") {
-		return <LoadingAnimation/>
+		return <LoadingAnimation />
 	}
 
 	if (pet_profile === "failed") {
-		return <NotRegistered/>
+		return <NotRegistered />
 	}
 
 	return (
 		<div className="w-full h-screen flex justify-center items-center">
 			<div className="w-[800px] h-[400px] bg-red-500 flex flex-col items-center justify-center">
-				<p className="text-4xl">Hello I am {pet_profile.name}! Nice to meet you</p>
+				<p className="text-4xl">Hello I am {pet_profile.title}! Nice to meet you</p>
 
-				<p>You can contact my owner at: {pet_profile.owner_contact}</p>
+				<p>You can contact my owner at: {pet_profile.contact_at}</p>
 			</div>
 		</div>
 	)
