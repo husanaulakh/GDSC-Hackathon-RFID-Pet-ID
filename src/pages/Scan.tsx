@@ -4,20 +4,6 @@ import { Search, AlertCircle, PlusCircle, RefreshCw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PetCard, { PetData } from '../components/PetCard';
 
-const samplePet: PetData = {
-  id: '2',
-  name: 'Max',
-  species: 'Cat',
-  breed: 'Tabby',
-  age: '2 years',
-  tagId: 'RF-4378-2901',
-  status: 'LOST',
-  image: 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?q=80&w=500',
-  lastSeen: '3 days ago',
-  location: 'Downtown, Seattle',
-  ownerContact: 'John Doe: (555) 123-4567',
-};
-
 const Scan = () => {
   const [showResult, setShowResult] = useState(false);
   const [tagId, setTagId] = useState('');
@@ -87,7 +73,7 @@ const Scan = () => {
               </div>
             ) : (
               <AnimatePresence>
-                <motion.div
+                {/* <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -118,7 +104,7 @@ const Scan = () => {
                       </button>
                     </div>
                   )}
-                </motion.div>
+                </motion.div> */}
               </AnimatePresence>
             )}
           </div>

@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { Upload, Image, Text } from 'lucide-react';
 import supabase from '@/supabaseClient';
 import { v4 as uuidv4 } from 'uuid';
+import { USER_ID } from '@/pages/Dashboard';
 
-const USER_UUID = "d695a227-daf7-4bd9-8915-367a66edc789"
-
-export default function PetForm() {
+export default function PetForm(props: {
+    callback: () => void
+}) {
     const [loading, setLoading] = useState(false);
     const [imageURL, setImageURL] = useState("");
     const [formData, setFormData] = useState({
-        user_id: USER_UUID,
+        user_id: USER_ID,
         pet_id: uuidv4(),
         title: '',
         description: '',
@@ -52,6 +53,9 @@ export default function PetForm() {
             const data = await supabase.from("pets").insert(formData);
             console.log("ADD NEW PET SUBMIT");
             console.log(data.error);
+            if (data.error == null){
+                props.callback();
+            }
         } catch (error) {
             console.error("Add Failed");
         } finally {
@@ -63,7 +67,7 @@ export default function PetForm() {
         <div>
 
 
-        {!loading && 
+        {loading ? <img className="h-[48px] m-8" src="/loading.gif" /> :
             <form className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 p-6 bg-white shadow-lg rounded-lg">
             <input 
                 type="text" 
@@ -89,7 +93,7 @@ export default function PetForm() {
                 <option value="">Select Status</option>
                 <option value="LOST">Lost</option>
                 <option value="FOUND">Found</option>
-                <option value="SAFE">Safe</option>
+                <option value="HOME">Home</option>
             </select>
                 <textarea
                     name="description" 
