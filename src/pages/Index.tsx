@@ -60,7 +60,7 @@ const Index = () => {
               PawTrack uses advanced RFID technology to help lost pets find their way home. Our simple, secure system connects pets to their owners faster than ever before.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/auth" className="btn-primary">
+              <Link to="/dashboard" className="btn-primary">
                 Get Started
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -206,7 +206,7 @@ const Index = () => {
                   Join thousands of pet owners who trust PawTrack to keep their furry family members safe.
                   Get your RFID tag today and gain peace of mind.
                 </p>
-                <Link to="/auth" className="inline-flex items-center justify-center rounded-md bg-white text-primary px-6 py-3 text-base font-medium shadow-sm hover:bg-white/90 transition-colors">
+                <Link to="/dashboard" className="inline-flex items-center justify-center rounded-md bg-white text-primary px-6 py-3 text-base font-medium shadow-sm hover:bg-white/90 transition-colors">
                   Get Started
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

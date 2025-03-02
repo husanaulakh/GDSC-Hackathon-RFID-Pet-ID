@@ -11,46 +11,7 @@ import PetCard, { PetData } from '../components/PetCard';
 import PetForm from '@/components/AddPetForm';
 import supabase from "@/supabaseClient";
 
-
-// const samplePets: PetData[] = [
-//   {
-//     id: '1',
-//     name: 'Bella',
-//     species: 'Dog',
-//     breed: 'Golden Retriever',
-//     age: '4 years',
-//     tagId: 'RF-9238-4721',
-//     status: 'FOUND',
-//     image: 'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?q=80&w=500',
-//     lastSeen: 'Yesterday',
-//     location: 'Central Park, NY',
-//   },
-//   {
-//     id: '2',
-//     name: 'Max',
-//     species: 'Cat',
-//     breed: 'Tabby',
-//     age: '2 years',
-//     tagId: 'RF-4378-2901',
-//     status: 'LOST',
-//     image: 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?q=80&w=500',
-//     lastSeen: '3 days ago',
-//     location: 'Downtown, Seattle',
-//     ownerContact: 'John Doe: (555) 123-4567',
-//   },
-//   {
-//     id: '3',
-//     name: 'Charlie',
-//     species: 'Dog',
-//     breed: 'Beagle',
-//     age: '3 years',
-//     tagId: 'RF-7623-1054',
-//     status: 'HOME',
-//     image: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=500',
-//   },
-// ];
-
-export const USER_ID = "464c1c37-7181-4ea6-a63d-cf8be0c03960";
+export const USER_ID = "464c1c37-7181-4ea6-a63d-cf8be0c03960"; // FOR DEMO PURPOSES
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('all');

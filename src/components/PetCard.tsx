@@ -2,20 +2,6 @@
 import React from 'react';
 import { PawPrint, Calendar, MapPin, AlertCircle, CheckCircle } from 'lucide-react';
 
-// export interface PetData {
-//   id: string;
-//   name: string;
-//   species: string;
-//   breed?: string;
-//   age?: string;
-//   tagId: string;
-//   status: 'FOUND' | 'LOST' | 'HOME';
-//   image?: string;
-//   lastSeen?: string;
-//   ownerContact?: string;
-//   location?: string;
-// }
-
 export interface PetData {
   user_id: string;
   pet_id: string;

@@ -55,8 +55,7 @@ export const Header = () => {
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'How It Works', path: '/#how-it-works' },
-    { name: 'Contact', path: '/#contact' },
+    { name: 'Dashboard', path: '/dashboard'}
   ];
 
   return (
@@ -84,16 +83,6 @@ export const Header = () => {
               </Link>
             ))}
           </nav>
-
-          <div className="hidden md:flex items-center space-x-4">
-            <Link
-              to="/auth"
-              className="btn-primary"
-            >
-              <User className="mr-2 h-4 w-4" />
-              Sign In
-            </Link>
-          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -130,15 +119,6 @@ export const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <div className="pt-4 border-t border-gray-100">
-              <Link
-                to="/auth"
-                className="block w-full px-4 py-2 text-base font-medium text-center text-white bg-primary rounded-md hover:bg-primary/90"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Sign In
-              </Link>
-            </div>
           </motion.div>
         )}
       </div>
@@ -175,11 +155,6 @@ export const Footer = () => {
               <li>
                 <Link to="/#how-it-works" className="text-muted-foreground hover:text-primary transition-colors">
                   How It Works
-                </Link>
-              </li>
-              <li>
-                <Link to="/#contact" className="text-muted-foreground hover:text-primary transition-colors">
-                  Contact Us
                 </Link>
               </li>
             </ul>
