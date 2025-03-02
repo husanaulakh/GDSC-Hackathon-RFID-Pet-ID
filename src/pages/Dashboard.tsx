@@ -8,6 +8,7 @@ import {
   AlertCircle, CheckCircle
 } from 'lucide-react';
 import PetCard, { PetData } from '../components/PetCard';
+import PetForm from '@/components/AddPetForm';
 
 const samplePets: PetData[] = [
   {
@@ -52,6 +53,7 @@ const Dashboard = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [selectedPet, setSelectedPet] = useState<PetData | null>(null);
+  const [showAddPet, setShowAddPet] = useState<boolean>(false);
 
   const filteredPets = samplePets.filter(pet => {
     const matchesSearch = pet.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -93,14 +95,14 @@ const Dashboard = () => {
                     <PawPrint className="h-5 w-5 mr-3 text-primary" />
                     My Pets
                   </button>
-                  <button className="flex items-center w-full px-4 py-3 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary/60">
+                  {/* <button className="flex items-center w-full px-4 py-3 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary/60">
                     <Bell className="h-5 w-5 mr-3 text-muted-foreground" />
                     Notifications
                   </button>
                   <button className="flex items-center w-full px-4 py-3 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary/60">
                     <Settings className="h-5 w-5 mr-3 text-muted-foreground" />
                     Settings
-                  </button>
+                  </button> */}
                 </nav>
                 
                 <div className="border-t border-gray-100 pt-6 mt-6">
@@ -141,7 +143,7 @@ const Dashboard = () => {
               <div className="glass-card p-6">
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
                   <h1 className="text-2xl font-semibold">My Pets</h1>
-                  <button className="btn-primary inline-flex whitespace-nowrap">
+                  <button className="btn-primary inline-flex whitespace-nowrap" onClick={() => setShowAddPet(true)}>
                     <Plus className="mr-2 h-4 w-4" />
                     Add New Pet
                   </button>
@@ -304,6 +306,32 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      {/* Add New Pet Modal */}
+      {showAddPet && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm" onClick={() => setShowAddPet(false)}></div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="relative bg-white rounded-xl shadow-raised max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+          >
+            <div className="p-6">
+              <div className="flex justify-between items-start mb-6">
+                <h2 className="text-2xl font-semibold">Add a New Pet</h2>
+                <button onClick={() => setShowAddPet(false)} className="p-1 rounded-full hover:bg-secondary">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <PetForm />
+            </div>
+          </motion.div>
+        </div>
+      )}
       
       {/* Pet Detail Modal */}
       {showModal && selectedPet && (
