@@ -29,6 +29,7 @@ const App = () => (
               <Route path="/auth" element={<Auth />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/c" element={<SeeRfid/>} />
+              <Route path="/similarity-search" element={} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </PageTransition>
