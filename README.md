@@ -1,8 +1,8 @@
-# PawTracker
+# PawTrackr
 
 **Reuniting lost pets with their families**
 
-PawTracker is a web application that uses advanced **RFID technology** and an **AI-driven** approach to help lost pets find their way home quickly and securely. Built with React and hosted on Vercel, it offers a seamless dashboard for pet owners to register and update pet statuses (LOST, FOUND, HOME) in real time.
+PawTrackr is a web application that uses advanced **RFID technology** and an **AI-driven** approach to help lost pets find their way home quickly and securely. Built with React and hosted on Vercel, it offers a seamless dashboard for pet owners to register and update pet statuses (LOST, FOUND, HOME) in real time.
 
 ## Key Features
 - **RFID Integration**: Assigns a unique RFID tag to each pet for quick and secure identification.
@@ -20,8 +20,8 @@ PawTracker is a web application that uses advanced **RFID technology** and an **
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YourUsername/pawtracker.git
-cd pawtracker
+git clone <repo>
+cd repo
 ```
 
 ### 2. Install dependencies
