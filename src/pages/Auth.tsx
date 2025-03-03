@@ -42,7 +42,7 @@ const Auth = () => {
                 </div>
               </motion.div>
               <div className="mt-8 space-y-6 pl-4">
-                <h2 className="heading-md">Why Join PawTrack?</h2>
+                <h2 className="heading-md">Why Join PawTracker?</h2>
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <div className="bg-primary/10 p-2 rounded-full mt-1 mr-4">
@@ -73,7 +73,7 @@ const Auth = () => {
                     <div>
                       <h3 className="font-medium mb-1">Peace of Mind</h3>
                       <p className="text-muted-foreground text-sm">
-                        Join thousands of pet owners who trust PawTrack with their furry family members.
+                        Join thousands of pet owners who trust PawTracker with their furry family members.
                       </p>
                     </div>
                   </div>
@@ -93,7 +93,7 @@ const Auth = () => {
                     <p className="text-muted-foreground">
                       {isLogin
                         ? 'Sign in to access your pet profiles and account'
-                        : 'Join PawTrack to keep your pets safe and secure'}
+                        : 'Join PawTracker to keep your pets safe and secure'}
                     </p>
                   </div>
 

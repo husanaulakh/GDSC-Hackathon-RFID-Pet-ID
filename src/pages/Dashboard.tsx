@@ -77,7 +77,7 @@ const Dashboard = () => {
                         <User className="h-6 w-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-medium">John Doe</h3>
+                        <h3 className="font-medium">Husan Aulakh</h3>
                         <p className="text-sm text-muted-foreground">Pet Owner</p>
                       </div>
                     </div>
