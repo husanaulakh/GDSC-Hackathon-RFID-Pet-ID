@@ -66,7 +66,7 @@ export const Header = () => {
             <div className="bg-primary rounded-full p-2">
               <PawPrint className="h-5 w-5 text-white" />
             </div>
-            <span className="text-xl font-semibold text-foreground">PawTracker</span>
+            <span className="text-xl font-semibold text-foreground">PawTrackr</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -136,10 +136,10 @@ export const Footer = () => {
               <div className="bg-primary rounded-full p-2">
                 <PawPrint className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-semibold text-foreground">PawTracker</span>
+              <span className="text-xl font-semibold text-foreground">PawTrackr</span>
             </Link>
             <p className="mt-4 text-muted-foreground">
-              PawTracker helps reunite lost pets with their owners using RFID technology.
+              PawTrackr helps reunite lost pets with their owners using RFID technology.
               Our mission is to ensure every pet finds its way home.
             </p>
           </div>
@@ -179,7 +179,7 @@ export const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-center text-muted-foreground">
-            © {new Date().getFullYear()} PawTracker. All rights reserved.
+            © {new Date().getFullYear()} PawTrackr. All rights reserved.
           </p>
         </div>
       </div>

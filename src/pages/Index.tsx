@@ -58,7 +58,7 @@ const Index = () => {
               <span className="text-primary">With RFID Technology</span>
             </h1>
             <p className="text-xl mb-8 text-muted-foreground max-w-2xl mx-auto text-balance">
-              PawTracker uses advanced RFID technology to help lost pets find their way home. Our simple, secure system connects pets to their owners faster than ever before.
+              PawTrackr uses advanced RFID technology to help lost pets find their way home. Our simple, secure system connects pets to their owners faster than ever before.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/dashboard" className="btn-primary">
@@ -108,7 +108,7 @@ const Index = () => {
       <section id="how-it-works" className="section-padding">
         <div className="layout-container">
           <div className="text-center mb-16">
-            <h2 className="heading-lg mb-4">How PawTracker Works</h2>
+            <h2 className="heading-lg mb-4">How PawTrackr Works</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Our pet identification system utilizes cutting-edge RFID technology to create a seamless experience for pet owners and finders alike.
             </p>
@@ -168,7 +168,7 @@ const Index = () => {
       <section className="section-padding bg-secondary">
         <div className="layout-container">
           <div className="text-center mb-16">
-            <h2 className="heading-lg mb-4">Reunited With PawTracker</h2>
+            <h2 className="heading-lg mb-4">Reunited With PawTrackr</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               See how our technology has helped reunite lost pets with their loving owners.
             </p>
@@ -204,7 +204,7 @@ const Index = () => {
               <div className="md:max-w-2xl mb-8 md:mb-0">
                 <h2 className="heading-lg mb-4">Ready to Protect Your Pet?</h2>
                 <p className="text-lg text-white/80 mb-8 max-w-xl">
-                  Join thousands of pet owners who trust PawTracker to keep their furry family members safe.
+                  Join thousands of pet owners who trust PawTrackr to keep their furry family members safe.
                   Get your RFID tag today and gain peace of mind.
                 </p>
                 <Link to="/dashboard" className="inline-flex items-center justify-center rounded-md bg-white text-primary px-6 py-3 text-base font-medium shadow-sm hover:bg-white/90 transition-colors">
@@ -238,7 +238,7 @@ const Index = () => {
             <div>
               <h2 className="heading-lg mb-4">Get In Touch</h2>
               <p className="text-muted-foreground mb-6">
-                Have questions about PawTracker? We're here to help. Reach out to our team and we'll get back to you as soon as possible.
+                Have questions about PawTrackr? We're here to help. Reach out to our team and we'll get back to you as soon as possible.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
@@ -256,7 +256,7 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-medium">Email Us</h3>
-                    <p className="text-muted-foreground">support@pawtracker.com</p>
+                    <p className="text-muted-foreground">support@pawtrackr.com</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
